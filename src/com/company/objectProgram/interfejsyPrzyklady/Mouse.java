@@ -1,9 +1,9 @@
 package com.company.objectProgram.interfejsyPrzyklady;
 
-public class Cat implements Animal{
+public class Mouse implements Animal{
     @Override
     public void run() {
-        System.out.println("I'm running - cat");
+        System.out.println("I'm running - mouse");
     }
 
     @Override

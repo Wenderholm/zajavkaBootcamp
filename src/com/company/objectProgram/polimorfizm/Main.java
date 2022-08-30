@@ -1,99 +1,5 @@
 package com.company.objectProgram.polimorfizm;
 
-class Car{
-    private boolean engine;
-    private int cylinders;
-    private String name;
-    private int wheels;
-
-    public Car(int cylinders, String name) {
-        this.cylinders = cylinders;
-        this.name = name;
-        this.engine=true;
-        this.wheels = 4;
-    }
-
-    public int getCylinders() {
-        return cylinders;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String startEngine() {
-        return "Car -> startEngine()";
-    }
-    public String accelerate(){
-        return "Car -> accelerate()";
-    }
-    public String brake(){
-        return "Car -> break()";
-    }
-}
-
-class Mitsubishi extends Car{
-    public Mitsubishi(int cylinders, String name) {
-        super(cylinders, name);
-    }
-
-    @Override
-    public String startEngine() {
-        return "Mitsubishi -> startEngine()";
-    }
-
-    @Override
-    public String accelerate() {
-        return "Mitsubishi -> accelerate()";
-    }
-
-    @Override
-    public String brake() {
-        return "Mitsubishi -> break()";
-    }
-}
-
-class Holden extends Car{
-    public Holden(int cylinders, String name) {
-        super(cylinders, name);
-    }
-
-    @Override
-    public String startEngine() {
-        return getClass().getSimpleName() + " -> startEngine()";
-    }
-
-    @Override
-    public String accelerate() {
-        return getClass().getSimpleName() + " -> accelerate()";
-    }
-
-    @Override
-    public String brake() {
-        return getClass().getSimpleName() + " -> break()";
-    }
-}
-class Ford extends Car{
-    public Ford(int cylinders, String name) {
-        super(cylinders, name);
-    }
-
-    @Override
-    public String startEngine() {
-        return getClass().getSimpleName() + " -> startEngine()";
-    }
-
-    @Override
-    public String accelerate() {
-        return getClass().getSimpleName() + " -> accelerate()";
-    }
-
-    @Override
-    public String brake() {
-        return getClass().getSimpleName() + " -> break()";
-    }
-}
-
 public class Main {
     public static void main(String[] args) {
         Car car = new Car(8,"BaseCar");
@@ -105,6 +11,14 @@ public class Main {
         System.out.println(mitsubishi.accelerate());
         System.out.println(mitsubishi.brake());
         System.out.println(mitsubishi.startEngine());
+        System.out.println(mitsubishi.horn());
+
+        Car car2 = new Mitsubishi(12, "Mitsubishi NEW");
+        System.out.println(car2.accelerate());
+        System.out.println(car2.brake());
+        System.out.println(car2.startEngine());
+//        tu horn nie zadziała poniewaz referencja car jest typu Car a w klasie Car nie ma metody horn()
+//        System.out.println(car2.horn());
 
         Ford ford = new Ford(7,"Civic");
         System.out.println(ford.accelerate());
