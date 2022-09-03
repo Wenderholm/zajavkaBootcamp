@@ -1,0 +1,35 @@
+package com.company.objectProgram.is_a_has_a_kompozycja.kompozycja;
+
+class CarEngine {
+    public void startEngine() {
+        System.out.println("Car Engine Started.");
+    }
+    public void stopEngine() {
+        System.out.println("Car Engine Stopped.");
+    }
+}
+
+class Car {
+    private String color;
+    private int max_Speed;
+
+    public void carDetails() {
+        System.out.println("Car Color= " + color + "; Max Speed= " + max_Speed);
+    }
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public void setMaxSpeed(int max_Speed) {
+        this.max_Speed = max_Speed;
+    }
+}
+
+class Honda extends Car {
+    public void HondaStart() {
+        CarEngine Honda_Engine = new CarEngine();
+//        composition
+        Honda_Engine.startEngine();
+        Honda_Engine.stopEngine();
+    }
+}
+
