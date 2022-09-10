@@ -1,4 +1,4 @@
-package com.company.arrays2.zadanie7;
+package com.company.arrays2.zadanie7_duplicateAndSort;
 
 import java.util.Arrays;
 

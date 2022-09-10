@@ -1,6 +1,4 @@
-package com.company.objectProgram.finalExercise.immutable;
-
-import com.company.objectProgram.finalExercise.immutable.Dog;
+package com.company.objectProgram.immutable;
 
 public class Main {
     public static void main(String[] args) {

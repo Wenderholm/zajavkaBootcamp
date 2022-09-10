@@ -1,4 +1,4 @@
-package com.company.objectProgram.finalExercise.immutable;
+package com.company.objectProgram.immutable;
 
 public final class Dog {
     private final String name;
