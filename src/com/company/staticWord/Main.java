@@ -1,8 +1,12 @@
 package com.company.staticWord;
 
+import static com.company.staticWord.Test.NOWY2;
+
 public class Main {
 
     public static void main(String[] args) {
+
+
         Dog dog1 = new Dog("Burek"  );
 //        mozna pisac tak
 //        System.out.println(dog1.howManyDog);

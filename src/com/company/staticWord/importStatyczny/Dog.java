@@ -5,10 +5,11 @@ public class Dog {
     public static final String SURNAME = "Zajavek";
     public static final int AGE = 4;
 
-    public static void bark(){
+    public static void bark() {
         System.out.println("Bark.");
     }
-    public static void goForAWalk(){
+
+    public static void goForAWalk() {
         System.out.println("Walk");
     }
 }

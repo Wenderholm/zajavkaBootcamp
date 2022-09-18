@@ -13,6 +13,8 @@ public class Dog extends Animal {
         howManyDog++;
     }
 
+
+
     public static void staticExample(){
         System.out.println("Static example");
 //        NIE MOŻNA DO METOD STATYCZNYCH WRZUCAĆ METOD NIE STATYCZNYCH PONIEWAŻ:
