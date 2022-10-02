@@ -1,6 +1,7 @@
 package com.company.dataAndTime;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class LocalExample {
@@ -99,6 +100,9 @@ public class LocalExample {
         System.out.println("wyświetlenie dni tygodnia");
         System.out.println(Arrays.toString(DayOfWeek.values()));
 
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
+        LocalTime localTime3 = LocalTime.parse("00:15:15",formatter);
+        System.out.println(localTime3);
 
     }
 }
