@@ -25,7 +25,8 @@ public class LocalExample {
         ));
 //      pokaz date 123 dzien w roku 2019
         System.out.println(LocalDate.ofYearDay(2019,123));
-// ile dni po epoch rok 1970 pokaze date
+// ile dni po epoch rok 1970 p
+//okaze date
         System.out.println(LocalDate.ofEpochDay(20000));
 
 //        drukowanie wszystkich miesiecy
