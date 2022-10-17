@@ -1,6 +1,4 @@
-package com.company.optionalExample;
-
-import org.w3c.dom.ls.LSOutput;
+package com.company.JavaAPI_Optional_stringBuilder.optionalExample;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.company.optionalExample;
+package com.company.JavaAPI_Optional_stringBuilder.optionalExample;
 
 import java.util.Optional;
 

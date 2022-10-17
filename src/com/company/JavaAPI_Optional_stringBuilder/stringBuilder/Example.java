@@ -1,4 +1,4 @@
-package com.company.stringBuilder;
+package com.company.JavaAPI_Optional_stringBuilder.stringBuilder;
 
 public class Example {
     public static void main(String[] args) {
