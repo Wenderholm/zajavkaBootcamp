@@ -1,5 +1,6 @@
 package com.company.projektHipoteczny.service;
 
+import com.company.projektHipoteczny.exceptions.MortgageException;
 import com.company.projektHipoteczny.model.InputData;
 import com.company.projektHipoteczny.model.Overpayment;
 import com.company.projektHipoteczny.model.Rate;
@@ -59,9 +60,9 @@ public class PrintingServiceImpl implements PrintingService {
                 "%4s %2s |" +
                 "%4s %8s |" +
                 "%7s %8s |" +
-                "%7s %10s |" +
-                "%7s %10s |" +
-                "%7s %10s |" +
+                "%7s %8s |" +
+                "%7s %8s |" +
+                "%7s %8s |" +
                 "%7s %3s ";
 
         for (Rate rate : rates) {

@@ -4,8 +4,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class MortgageResidual {
+//    pozostala kwota do splaty
     private final BigDecimal amount;
-
+//pozostaly czas do splaty
     private final BigDecimal duration;
 
 

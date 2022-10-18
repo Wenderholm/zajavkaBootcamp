@@ -1,4 +1,4 @@
-package com.company.projektHipoteczny.service;
+package com.company.projektHipoteczny.exceptions;
 
 public class MortgageException extends RuntimeException{
 

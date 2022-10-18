@@ -1,7 +1,5 @@
 package com.company.projektHipoteczny.model;
 
-import com.company.projektHipoteczny.service.MortgageReference;
-
 import java.math.BigDecimal;
 
 public class Rate {

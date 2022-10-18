@@ -1,9 +1,11 @@
-package com.company.projektHipoteczny.service;
+package com.company.projektHipoteczny.model;
 
 import java.math.BigDecimal;
 
 public class MortgageReference {
+//    kwota
     private final BigDecimal referenceAmount;
+
     private final BigDecimal referenceDuration;
 
     public MortgageReference(BigDecimal referenceAmount, BigDecimal referenceDuration) {
@@ -11,11 +13,11 @@ public class MortgageReference {
         this.referenceDuration = referenceDuration;
     }
 
-    public BigDecimal getReferenceAmount() {
+    public BigDecimal getAmount() {
         return referenceAmount;
     }
 
-    public BigDecimal getReferenceDuration() {
+    public BigDecimal getDuration() {
         return referenceDuration;
     }
 }
