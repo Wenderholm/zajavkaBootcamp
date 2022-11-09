@@ -8,7 +8,10 @@ public class Main {
 //        final String name = "Karol";
 //        name = "Bartek";
 
-//        final int num = 34;
-//        num = 33;
+        final int num = 34;
+        final double num2 = 34.0;
+
+        System.out.println(num);
+        System.out.println(num2);
     }
 }

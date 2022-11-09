@@ -39,6 +39,7 @@ public final class Dog {
 //    NAJCZĘSCIEJ WYKONUJE SIĘ TO W TEN SPOSÓB
     private final String name;
 
+    final int a = 5;
 // w tym przypadku słowo final blokuje mozliwość przypisania w konstuktorze do parametru  innej wartosci
     public Dog(final String name) {
 //        name = "Romek";  <- tak sie nie da blokuje to final
