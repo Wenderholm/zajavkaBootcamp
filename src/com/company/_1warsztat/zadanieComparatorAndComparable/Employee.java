@@ -26,23 +26,23 @@ public class Employee implements Comparable<Employee> {
 
 
     @Override
-    public int compareTo(Employee o) {
-        int nameCompare = this.name.compareTo(o.name);
+    public int compareTo(Employee other) {
+        int nameCompare = name.compareTo(other.name);
         if(nameCompare != 0){
             return nameCompare;
         }
 
-        int surnameCompare = o.surname.compareTo(this.surname);
+        int surnameCompare = other.surname.compareTo(surname);
         if(surnameCompare != 0){
             return surnameCompare;
         }
 
-        int ageCompare = this.age.compareTo(o.age);
+        int ageCompare = age.compareTo(other.age);
         if(ageCompare != 0){
             return ageCompare;
         }
 
-        return o.salary.compareTo(this.salary);
+        return other.salary.compareTo(salary);
     }
 
     public String getName() {
