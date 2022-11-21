@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ComparatorExample {
+
     public static void main(String[] args) {
 //        tej listy nie mozemy modyfikowac
         List<String> strings = List.of("a","b","c");
