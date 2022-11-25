@@ -25,15 +25,18 @@ public class Map_TreeMap {
 //        }
 
 //        aby sortowac po nazwie to uzywamy comparator
+//        UWAGA jezeli mamy comparator uzyty jako lambda oraz comparTo w metodzie to zostanie wywolany comparator z lamda
 //        Map<Dog, String> treeMap = new TreeMap<>(((o1, o2) -> o1.name.compareTo(o2.name)));
 
 //        aby sortowac mozemy tez uzyc Comparable w klasie Dog
+//        HashMap wykorzystuje metody hashcode i equal
+//        treeMap wykorzystuje metody compare to z klasy
         Map<Dog, String> treeMap = new TreeMap<>();
         treeMap.put(new Dog("o9"), "some hashMap 1");
         treeMap.put(new Dog("G5"), "some hashMap 2");
-        treeMap.put(new Dog("A9"), "some hashMap 3");
+        treeMap.put(new Dog("o9"), "some hashMap 3");
         treeMap.put(new Dog("a2"), "some hashMap 4");
-        treeMap.put(new Dog("1A"), "some hashMap 5");
+        treeMap.put(new Dog("o9"), "some hashMap 5");
 
         System.out.println(treeMap);
 
@@ -58,6 +61,7 @@ public class Map_TreeMap {
 
         @Override
         public boolean equals(Object o) {
+            System.out.println("Equal calling ....");
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Dog dog = (Dog) o;
@@ -66,11 +70,14 @@ public class Map_TreeMap {
 
         @Override
         public int hashCode() {
-            return Objects.hash(name);
+            int hashValue = Objects.hash(name);
+            System.out.println("Hashcode calling .... " + hashValue);
+            return hashValue;
         }
 
         @Override
         public int compareTo(Dog o) {
+            System.out.println("compareTo calling ....");
             return this.name.compareTo(o.name);
         }
     }
