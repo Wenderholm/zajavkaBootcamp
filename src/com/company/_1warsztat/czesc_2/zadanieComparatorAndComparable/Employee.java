@@ -69,6 +69,7 @@ public class Employee implements Comparable<Employee> {
 //        Comparator<Employee> comparingSurname = comparingName.thenComparing(e -> e.surname).reversed();
 //        Comparator<Employee> compareAge = comparingSurname.thenComparing(e -> e.age);
 //        Comparator<Employee> comparingSalary = compareAge.thenComparing(e -> e.salary).reversed();
+//        return comparingSalary.compareTo(this, employee);
 
 //        powyzsze za pomoca shortcut CTRL+ALT+N wyglada tak
 //        return Comparator
