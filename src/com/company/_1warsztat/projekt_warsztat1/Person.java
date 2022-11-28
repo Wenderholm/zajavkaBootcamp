@@ -19,8 +19,10 @@ public class Person {
         this.id = generateId();
     }
 
+//    tworzenie id zgodnie z tym czy jest to VIP czy tez nie
     private String generateId() {
-        return this.isVip ? String.format("%s_%s_%s_VIP", this.name, this.surname, this.counter)
+        return this.isVip
+                ? String.format("%s_%s_%s_VIP", this.name, this.surname, this.counter)
                 : String.format("%s_%s_%s", this.name, this.surname, this.counter);
     }
 
@@ -39,6 +41,7 @@ public class Person {
         return id != null ? id.hashCode() : 0;
     }
 
+//    pobieramy tylko id ponieważ w id jest już zawarty cały uzytkownik
     @Override
     public String toString() {
         return id;

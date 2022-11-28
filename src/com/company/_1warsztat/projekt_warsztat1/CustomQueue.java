@@ -7,11 +7,15 @@ import java.util.Map;
 
 
 public class CustomQueue<T> {
-
+//    kolejka stworzona do naszej zwykłej kolejki
     private final Deque<T> queue;
+
     private final Deque<T> queueVip;
+//    mapa stworzona do podnoszenia licznika
     private final Map<String, Integer> counterMap = new HashMap<>();
 
+//    tu mamy mozliwosć wrzucenia jakiej kolwiek kolejki dla zwykłych klientów oraz VIP
+//    rodzaj kolejki dodawany jest w Main
     public CustomQueue(Deque<T> queue, Deque<T> queueVip) {
         this.queue = queue;
         this.queueVip = queueVip;
@@ -30,7 +34,12 @@ public class CustomQueue<T> {
         printTotalQueue();
     }
 
+//    pobiera i zwieksza licznik
     public Integer getAndIncrementCounter(String key) {
+//        tymczaswoy klucz rowna się -> jezeli podamy key(naszym kluczem jest imię i nazwisko a wartoscia licznik)
+//        i w naszej mapie mamy taki key to wyciagamy jego counter
+//        dla danego key. pozniej do mapylicznika dorzucamy po ten sam klucz licznik zwiekszony
+//
         Integer tempCounter = counterMap.getOrDefault(key, 0);
         counterMap.put(key, ++tempCounter);
         return tempCounter;
