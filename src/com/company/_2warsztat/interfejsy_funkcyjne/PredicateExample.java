@@ -1,4 +1,4 @@
-package com.company._2warsztat.IFPredicate;
+package com.company._2warsztat.interfejsy_funkcyjne;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class PredicateExample {
 
 
     }
-//      metoda stringTest moze byc uzyta jako metodReference ponieważ strukturą jest taka sama jak motoda test
+//      metoda stringTest moze byc uzyta jako metodReference ponieważ strukturą jest taka sama jak motoda test z Consumera
 //    czyli przyjmuje String jako wejscie i zwraca boolean
 
 //    ta metoda ma służyc do zaimlemenotwania metody test z interfejsu funkcyjnergo Predicat

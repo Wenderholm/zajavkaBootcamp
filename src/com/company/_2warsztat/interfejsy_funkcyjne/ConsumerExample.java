@@ -1,4 +1,4 @@
-package com.company._2warsztat.IFConsumer;
+package com.company._2warsztat.interfejsy_funkcyjne;
 
 import java.util.function.Consumer;
 
@@ -12,9 +12,11 @@ public class ConsumerExample {
 
 
 //        powyższe zapisane za pomoca methodReference
+//     metoda extract tak samo jak metoda a accept przyjmuje jakąś wartość i nic nie zwraca
         Consumer<String> consumer1 = ConsumerExample::extracted;
         consumer1.accept("Zakopane");
     }
+
 
     private static void extracted(String input) {
         System.out.println("Calling accetp");
