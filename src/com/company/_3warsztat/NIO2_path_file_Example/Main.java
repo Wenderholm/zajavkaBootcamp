@@ -1,8 +1,7 @@
-package com.company._3warsztat.NIO2pathExample;
+package com.company._3warsztat.NIO2_path_file_Example;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
