@@ -21,7 +21,7 @@ public class Main {
             System.out.println("File: " + file + " is file");
             System.out.println("File.length(): " + file.length());
         }
-
+        System.out.println("$$$$$$$$$$$$$$$$$$$$");
         File file3 = new File("./src/com/company/_3warsztat/klasFile");
         if(file3.isDirectory()){
             for (File listFile : file3.listFiles()) {
