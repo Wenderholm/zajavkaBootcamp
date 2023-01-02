@@ -47,6 +47,6 @@ public enum Dance {
     }
 
     public String getDay(){
-        return Arrays.toString(lessonTime);
+        return Arrays.toString(lessonDay);
     }
 }

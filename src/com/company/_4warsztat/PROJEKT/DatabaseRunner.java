@@ -30,7 +30,10 @@ public class DatabaseRunner {
         EXECUTION_MAP = Map.of(
                 Command.Type.CREATE, this::runAdd,
                 Command.Type.UPDATE, this::runEdit,
-                Command.Type.DELETE_ALL, this::runDeletedAll
+                Command.Type.READ, this::runRead,
+                Command.Type.READ_ALL, this::runReadAll,
+                Command.Type.DELETE_ALL, this::runDeletedAll,
+                Command.Type.DELETE, this::runDeleted
         );
     }
 
@@ -103,7 +106,7 @@ public class DatabaseRunner {
             statement.setString(1, command.getToDoItem().getName());
             try (ResultSet resultSet = statement.executeQuery()) {
                 List<ToDoItem> readItem = mapToToDoItem(resultSet);
-//                print(readItem);
+                print(readItem);
                 System.out.printf("Run [%s] successfully, read [%s] rows %n", command.getType(), readItem.size());
             }
             ;
@@ -113,19 +116,61 @@ public class DatabaseRunner {
         }
     }
 
+    private void print(List<ToDoItem> readItem) {
+        System.out.println("PRINTING TO DO LIST");
+        String schema = "%-25s%-25s%-25s%-25s%n";
+        System.out.printf(schema,
+                ToDoItem.Field.NAME.name(),
+                ToDoItem.Field.DESCRIPTION.name(),
+                ToDoItem.Field.DEADLINE.name(),
+                ToDoItem.Field.PRIORITY.name()
+        );
+        readItem.forEach(entry -> System.out.printf(schema,
+                entry.getName(),entry.getDescription(),entry.getDeadline(),entry.getPriority()));
+    }
+
     private List<ToDoItem> mapToToDoItem(ResultSet resultSet) throws SQLException {
 
         List<ToDoItem> result = new ArrayList<>();
         while (resultSet.next()) {
             ToDoItem toDoItem = new ToDoItem();
-            toDoItem.setName(resultSet.getString("name"));
-            toDoItem.setDescription(resultSet.getString("description"));
-            toDoItem.setDeadline(resultSet.getTimestamp("deadline").toLocalDateTime());
-            toDoItem.setPriority(resultSet.getInt("priority"));
+//            ToDoItem.Field.NAME.name() -> zwraca nazwe enuma
+            toDoItem.setName(resultSet.getString(ToDoItem.Field.NAME.name()));
+            toDoItem.setDescription(resultSet.getString(ToDoItem.Field.DESCRIPTION.name()));
+            toDoItem.setDeadline(resultSet.getTimestamp(ToDoItem.Field.DEADLINE.name()).toLocalDateTime());
+            toDoItem.setPriority(resultSet.getInt(ToDoItem.Field.PRIORITY.name()));
+            result.add(toDoItem);
         }
         return result;
     }
 
+
+
+    private void runReadAll(final Command command) {
+        if (!Command.Type.READ_ALL.equals(command.getType())) {
+            throw new IllegalArgumentException(command.getType().getName());
+        }
+        try (
+                Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(SQL_READ_ALL
+                        .replace("?1",command.getSortBy().name())
+                        .replace("?2",command.getSortDir().name()))
+        ) {
+//           wstawianie po czym chcemy sortowac i jaki rodzaj sortowania wstawian nam ' ' przy 'PRIORITY' oraz 'DESC'
+//            aby obejsc ten problem modyfikujemy zapytanie sql read all
+//            statement.setString(1, command.getSortBy().name());
+//            statement.setString(2,command.getSortDir().name());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                List<ToDoItem> readItem = mapToToDoItem(resultSet);
+                print(readItem);
+                System.out.printf("Run [%s] successfully, read [%s] rows %n", command.getType(), readItem.size());
+            }
+
+
+        } catch (SQLException e) {
+            System.err.printf("[%s] data error. Message: [%s]%n", command.getType(), e.getMessage());
+        }
+    }
     private void runDeletedAll(final Command command) {
 //        zabezepieczenie jezeli komenda wejdzie inna niz CREATE to jej nie wykonamy
         if (!Command.Type.DELETE_ALL.equals(command.getType())) {
@@ -142,4 +187,22 @@ public class DatabaseRunner {
         }
     }
 
+
+    private void runDeleted(final Command command) {
+//        zabezepieczenie jezeli komenda wejdzie inna niz CREATE to jej nie wykonamy
+        if (!Command.Type.DELETE.equals(command.getType())) {
+            throw new IllegalArgumentException(command.getType().getName());
+        }
+        try (
+                Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(SQL_DELETE)
+        ) {
+//            "DELETE FROM TODOLIST WHERE NAME = ?;"
+            statement.setString(1,command.getToDoItem().getName());
+            int count = statement.executeUpdate();
+            System.out.printf("Run [%s] successfully, modified [%s] rows %n", command.getType(), count);
+        } catch (SQLException e) {
+            System.err.printf("[%s] data error. Message: [%s]%n", command.getType(), e.getMessage());
+        }
+    }
 }
