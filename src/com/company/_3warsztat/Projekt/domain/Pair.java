@@ -16,4 +16,12 @@ public class Pair<U,T> {
     public T getP2() {
         return p2;
     }
+
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "p1=" + p1 +
+                ", p2=" + p2 +
+                '}';
+    }
 }

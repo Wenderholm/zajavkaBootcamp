@@ -11,6 +11,7 @@ import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 public class Main {
     public static final String EX2 = "./src/com/company/_3warsztat/Projekt/exported/ex2/";
     public static final String EX3 = "./src/com/company/_3warsztat/Projekt/exported/ex3/";
+    public static final String EX4 = "./src/com/company/_3warsztat/Projekt/exported/ex4/";
 
     public static void main(String[] args) {
         Path path = Paths.get("./src/com/company/_3warsztat/Projekt/resources/client-car-purchase-spreadsheet.csv");
@@ -97,6 +99,38 @@ public class Main {
                 .collect(Collectors.toList());
 
         generateEx3Report(ex3ReportData);
+
+
+    // ZADANIE 4
+
+        TreeMap<LocalDate, Long> mapByDate = purchases.stream()
+                .collect(Collectors.groupingBy(
+                        p -> p.getDate(),
+                        TreeMap::new,
+                        Collectors.counting()
+                ));
+
+        AtomicInteger counter2 = new AtomicInteger(1);
+        List<String> dataByDate = mapByDate.entrySet().stream()
+                .map(e -> String.format("%s,%s,%s", counter2.getAndIncrement(), e.getKey(), e.getValue()))
+                .collect(Collectors.toList());
+
+        generateEx4Report(dataByDate, "byDate");
+
+        AtomicInteger counter3 = new AtomicInteger(1);
+        List<String> dataByCount = mapByDate.entrySet().stream()
+                .map(e -> new Pair<>( e.getKey(),e.getValue()))
+                .sorted(Comparator.comparing((Pair< LocalDate,Long> p) -> p.getP2()).reversed())
+                .map(e -> String.format("%s,%s,%s", counter3.getAndIncrement(), e.getP1(),e.getP2()))
+                .collect(Collectors.toList());
+
+        generateEx4Report(dataByDate, "ByCount");
+
+    }
+
+    private static void generateEx4Report(List<String> dataByDate, String suffix) {
+        Path path = Paths.get(EX4 + "report" + suffix + ".csv");
+        FileServices.saveToFile(path,dataByDate,"id,date,count");
     }
 
     private static void generateEx3Report(List<String> ex3ReportData) {
